@@ -2,57 +2,35 @@
 //  ContentView.swift
 //  CodeBreaker
 //
-//  Created by Rob Ranf on 2026-01-05.
+//  Created by Rob Ranf on 2026-01-20.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    var i: Int = 0
-    var s: String = ""
-    var sayGreetings: Bool = false
-    
     var body: some View {
-        //        VStack(alignment: .leading, spacing: 10, content: greetings)
-        //            .padding()
-        
-        VStack(alignment: .leading, spacing: 10) {
-            Image(systemName: "globe")
-            if sayGreetings {
-                Text("Greetings")
-            }
-            Text("Hello")
-            Circle()
+        VStack {
+            pegs(colors: [.red, .blue, .green, .customColorPurple])
+            pegs(colors: [.red, .yellow, .green, .green])
+            pegs(colors: [.blue, .blue, .red, .blue])
         }
+        .padding()
     }
     
-//    @ViewBuilder
-//    func greetings() -> TupleView<(Image, Text, Circle)> {
-//        Image(systemName: "globe")
-//        Text("Greetings!")
-//        Circle()
-//    }
-    
-    /**
-     Better than the above function, demonstrates what "some View" means, which is that some view is simply a "bag of lego bricks" wherein a lego brick is a single instance of something that conforms to the View protocol.
-     */
-//    @ViewBuilder
-//    func greetings() -> some View {
-//        Image(systemName: "globe")
-//        if sayGreetings {
-//            Text("Greetings")
-//        }
-//        Text("Hello")
-//        Circle()
-//    }
-    
-    /**
-     We can't pass this to the "content" param in VStack or any other view because that content param requires something that conforms to view and String does not conform to View.
-     */
-//    func newGreetings() -> String {
-//        return "Greetings!"
-//    }
+    func pegs(colors: Array<Color>) -> some View {
+        HStack {
+            MatchMarkersView(matches: [.exact, .inexact, .nomatch, .exact])
+            
+            ForEach(colors.indices, id: \.self) { index in
+                RoundedRectangle(cornerRadius: 10)
+                    .aspectRatio(1, contentMode: .fit)
+                    .foregroundStyle(colors[index])
+            }
+        }
+    }
 }
+
+
 
 #Preview {
     ContentView()
