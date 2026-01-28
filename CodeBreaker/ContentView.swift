@@ -13,6 +13,12 @@ struct ContentView: View {
             pegs(colors: [.red, .blue, .green, .customColorPurple])
             pegs(colors: [.red, .yellow, .green, .green])
             pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
+            pegs(colors: [.blue, .blue, .red, .blue])
         }
         .padding()
     }
