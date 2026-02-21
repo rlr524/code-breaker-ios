@@ -5,11 +5,13 @@
 //  Created by Rob Ranf on 2026-02-20.
 //
 
-import Foundation
+//import Foundation
+import SwiftUI
 
 struct CodeBreaker {
-    var masterCode: Code
-    var guess: Code
-    var attempts: [Code]
-    var pegChoices: [Peg]
+    var masterCode: Code = Code(kind: .master)
+    var guess: Code = Code(kind: .guess)
+    var attempts: [Code] = [Code]()
+    let pegChoices: [Peg] = [.red, .green, .blue, .yellow]
+    
 }

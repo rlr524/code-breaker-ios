@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CodeBreakerView.swift
 //  CodeBreaker
 //
 //  Created by Rob Ranf on 2026-01-20.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CodeBreakerView: View {
+    let game = CodeBreaker()
+    
     var body: some View {
         VStack {
             pegs(colors: [.red, .blue, .green, .customColorPurple])
@@ -39,5 +41,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    CodeBreakerView()
 }

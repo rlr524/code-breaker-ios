@@ -5,8 +5,7 @@
 //  Created by Rob Ranf on 2026-02-20.
 //
 
-import Foundation
+//import Foundation
+import SwiftUI
 
-struct Peg {
-    
-}
+typealias Peg = Color
