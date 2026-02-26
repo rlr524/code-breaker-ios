@@ -21,15 +21,11 @@ struct MatchMarkersView: View {
         HStack {
             VStack {
                 matchMarker(peg: 0)
-                Text("0")
                 matchMarker(peg: 1)
-                Text("1")
             }
             VStack {
                 matchMarker(peg: 2)
-                Text("2")
                 matchMarker(peg: 3)
-                Text("3")
             }
         }
     }

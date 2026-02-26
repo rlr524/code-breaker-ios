@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct CodeBreaker {
-    var masterCode: Code = Code(kind: .master)
-    var guess: Code = Code(kind: .guess)
-    var attempts: [Code] = [Code]()
-    let pegChoices: [Peg] = [.red, .green, .blue, .yellow]
-    
+    var masterCode = Code(kind: .master)
+    var guess = Code(kind: .guess)
+    var attempts = [Code]()
+    let pegChoices: [Color] = [.red, .green, .blue, .yellow]
 }

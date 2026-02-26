@@ -12,27 +12,20 @@ struct CodeBreakerView: View {
     
     var body: some View {
         VStack {
-            pegs(colors: [.red, .blue, .green, .customColorPurple])
-            pegs(colors: [.red, .yellow, .green, .green])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
-            pegs(colors: [.blue, .blue, .red, .blue])
+            viewCodes(for: game.masterCode)
+            viewCodes(for: game.guess)
         }
         .padding()
     }
     
-    func pegs(colors: Array<Color>) -> some View {
+    func viewCodes(for code: Code) -> some View {
         HStack {
             MatchMarkersView(matches: [.exact, .inexact, .nomatch, .exact])
             
-            ForEach(colors.indices, id: \.self) { index in
+            ForEach(code.pegs.indices, id: \.self) { index in
                 RoundedRectangle(cornerRadius: 10)
                     .aspectRatio(1, contentMode: .fit)
-                    .foregroundStyle(colors[index])
+                    .foregroundStyle(code.pegs[index])
             }
         }
     }
