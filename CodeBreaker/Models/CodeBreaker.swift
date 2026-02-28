@@ -12,11 +12,17 @@ struct CodeBreaker {
     var masterCode = Code(kind: .master)
     var guess = Code(kind: .guess)
     var attempts = [Code]()
-    let pegChoices: [Color] = [.red, .green, .blue, .yellow]
+    let pegChoices: [Peg]
+    
+    init(pegchoices: [Peg] = [.red, .green, .yellow, .blue]) {
+        self.pegChoices = pegchoices
+        masterCode.randomizeMasterPegs(from: pegChoices)
+        print(masterCode)
+    }
     
     mutating func attemptGuess() {
         var attempt = guess
-        attempt.kind = .attempt
+        attempt.kind = .attempt(guess.match(against: masterCode))
         //attempts.append(attempt)
         attempts.insert(attempt, at: 0)
     }
@@ -32,4 +38,3 @@ struct CodeBreaker {
         
     }
 }
-

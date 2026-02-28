@@ -10,15 +10,25 @@ import SwiftUI
 
 struct Code {
     var kind: Kind
-    var pegs: [Peg] = [.green, .red, .red, .yellow]
+    var pegs: [Peg] = Array(repeating: Code.missing, count: 4)
     
     static let missing: Peg = .clear
     
-    enum Kind {
+    enum Kind: Equatable {
         case master
         case guess
-        case attempt
+        // Associated values, reads as "define an enum type called 'Kind' that can take a value of
+        // 'attempt' that has an associated value of type 'array of Match'". Meaning that when
+        // 'attempt' is used, it must be of type array of Match.
+        case attempt([Match])
         case unknown
+    }
+    
+    var matches: [Match] {
+        switch kind {
+        case .attempt(let matches): return matches
+        default: return []
+        }
     }
     
     func match(against otherCode: Code) -> [Match] {
@@ -39,5 +49,11 @@ struct Code {
             }
         }
         return results
+    }
+    
+    mutating func randomizeMasterPegs(from pegChoices: [Peg]) {
+        for i in pegChoices.indices {
+            pegs[i] = pegChoices.randomElement() ?? Code.missing
+        }
     }
 }

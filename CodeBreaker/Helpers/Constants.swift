@@ -9,4 +9,5 @@ import Foundation
 
 struct K {
     static let appName: String = "CodeBreaker"
+    static let iconFontSize: CGFloat = 65
 }
